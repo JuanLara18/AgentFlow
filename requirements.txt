@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+numpy
+scipy
+simpy
+mesa
+xgboost
+optuna
+streamlit
+plotly
+networkx
+pandas
+python-dotenv
+pytest
