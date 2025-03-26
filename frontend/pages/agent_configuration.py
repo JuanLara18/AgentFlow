@@ -10,7 +10,7 @@ def show_agent_configuration():
         st.warning("Please select a scenario first in the Scenario Setup page")
         if st.button("Go to Scenario Setup"):
             st.session_state.page = "Scenario Setup"
-            st.experimental_rerun()
+            st.rerun()
         return
     
     # Mostrar el escenario activo

@@ -32,7 +32,7 @@ st.sidebar.caption("Multi-Agent Simulation Framework")
 st.sidebar.markdown("---")
 st.sidebar.markdown("### Navigation")
 page = st.sidebar.radio(
-    "",
+    "Navigation",
     ["Scenario Setup", "Agent Configuration", "Organizational Policies", 
      "Simulation Execution", "Analytics & Visualization", "Export & Reporting"],
     label_visibility="collapsed"

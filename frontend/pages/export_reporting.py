@@ -131,7 +131,7 @@ def show_export_reporting():
                 
                 if st.button("Delete", key=f"delete_{i}"):
                     st.session_state.annotations.pop(i)
-                    st.experimental_rerun()
+                    st.rerun()
     
     # Exportar anotaciones
     if st.session_state.annotations:
