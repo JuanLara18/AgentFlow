@@ -20,6 +20,10 @@ def show_simulation_execution():
         st.warning("Please configure organizational policies in the Organizational Policies page")
         return
     
+    # Initialize default values if not present
+    sim_duration = st.session_state.get('sim_duration', 100)
+    market_volatility = st.session_state.get('market_volatility', 0.3)
+    
     # Mostrar resumen de configuración
     with st.expander("Configuration Summary", expanded=False):
         col1, col2, col3 = st.columns(3)
@@ -32,8 +36,8 @@ def show_simulation_execution():
                 "decentralized": "Decentralized Training"
             }
             st.write(f"**Type:** {scenario_names[st.session_state.current_scenario]}")
-            st.write(f"**Duration:** {st.session_state.sim_duration} periods")
-            st.write(f"**Market Volatility:** {st.session_state.market_volatility}")
+            st.write(f"**Duration:** {sim_duration} periods")
+            st.write(f"**Market Volatility:** {market_volatility}")
         
         with col2:
             st.subheader("Agents")

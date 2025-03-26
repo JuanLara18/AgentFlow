@@ -73,7 +73,14 @@ def setup_session_state_defaults():
         'org_policies': {},
         'simulation_results': None,
         'page': "Scenario Setup",
-        'annotations': []
+        'annotations': [],
+        
+        # Scenario parameters
+        'sim_duration': 100,
+        'market_volatility': 0.3,
+        'initial_capital': 100000,
+        'training_cost': 1.0,
+        'decision_freq': 5
     }
     
     for key, value in defaults.items():

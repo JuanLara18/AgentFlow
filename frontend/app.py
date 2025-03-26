@@ -5,6 +5,7 @@ from pages.organizational_policies import show_organizational_policies
 from pages.simulation_execution import show_simulation_execution
 from pages.analytics_visualization import show_analytics_visualization
 from pages.export_reporting import show_export_reporting
+from utils.st_helpers import setup_session_state_defaults
 
 # Configuración de la página
 st.set_page_config(
@@ -13,6 +14,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# Initialize all default session state variables
+setup_session_state_defaults()
 
 # Inicialización de estado si no existe
 if 'current_scenario' not in st.session_state:
@@ -23,6 +27,18 @@ if 'org_policies' not in st.session_state:
     st.session_state.org_policies = {}
 if 'simulation_results' not in st.session_state:
     st.session_state.simulation_results = None
+
+# Inicialización de variables de escenario
+if 'sim_duration' not in st.session_state:
+    st.session_state.sim_duration = 100
+if 'market_volatility' not in st.session_state:
+    st.session_state.market_volatility = 0.3
+if 'initial_capital' not in st.session_state:
+    st.session_state.initial_capital = 100000
+if 'training_cost' not in st.session_state:
+    st.session_state.training_cost = 1.0
+if 'decision_freq' not in st.session_state:
+    st.session_state.decision_freq = 5
 
 # Título principal
 st.sidebar.title("AgentFlow")
