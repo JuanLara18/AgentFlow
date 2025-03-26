@@ -344,7 +344,7 @@ def network_analysis_chart(metric_type, threshold=0.3):
     with col3:
         density = len(G.edges()) / (len(G.nodes()) * (len(G.nodes()) - 1) / 2)
         st.metric("Network Density", f"{density:.2f}")
-
+        
 def comparative_chart(data_df, x_metric, y_metric, color_metric):
     """
     Muestra un gráfico comparativo entre diferentes métricas.

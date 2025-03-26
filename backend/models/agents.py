@@ -1,3 +1,6 @@
+import time
+import random
+
 class Agent:
     """Clase base para todos los tipos de agentes."""
     
@@ -8,12 +11,49 @@ class Agent:
         self.tasks_completed = 0
         self.performance_history = []
     
-    def perform_task(self, task_difficulty):
-        """Realiza una tarea y devuelve el resultado de rendimiento."""
-        performance = min(1.0, self.knowledge_level * (1.0 / task_difficulty))
+    def perform_task(self, task):
+        """
+        Realiza una tarea y devuelve el resultado de rendimiento.
+        
+        Args:
+            task: Objeto Task con información de la tarea
+        
+        Returns:
+            dict: Diccionario con los resultados de la tarea
+        """
+        # Verificar si la tarea es válida
+        if not task:
+            return {"success": False, "message": "Tarea inválida", "performance": 0}
+        
+        # Calcular desempeño basado en dificultad y nivel de conocimiento
+        difficulty_factor = task.difficulty or 0.5
+        performance = min(1.0, self.knowledge_level * (1.0 / difficulty_factor))
+        
+        # Añadir factor aleatorio pequeño para simular variabilidad
+        performance_with_variation = max(0, min(1.0, performance * (0.9 + random.random() * 0.2)))
+        
+        # Registrar la tarea completada
         self.tasks_completed += 1
-        self.performance_history.append(performance)
-        return performance
+        self.performance_history.append(performance_with_variation)
+        
+        # Calcular tiempo de ejecución basado en la dificultad y el desempeño
+        execution_time = task.duration / performance_with_variation
+        
+        # Calcular calidad del resultado
+        quality = performance_with_variation * (0.8 + 0.2 * random.random())
+        
+        # Preparar resultado
+        result = {
+            "task_id": task.task_id,
+            "agent_id": self.agent_id,
+            "performance": performance_with_variation,
+            "quality": quality,
+            "execution_time": execution_time,
+            "timestamp": time.time(),
+            "success": True
+        }
+        
+        return result
     
     def update_satisfaction(self, org_support=0.5):
         """Actualiza el nivel de satisfacción del agente."""
