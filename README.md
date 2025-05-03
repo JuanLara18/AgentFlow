@@ -1,4 +1,4 @@
-# AgentFlow - Multi-Agent Simulation Framework
+# AgentFlow - Simulation (beta)
 
 AgentFlow is a comprehensive multi-agent simulation framework specialized in modeling organizational economics and strategic management. This platform allows researchers, managers, and decision-makers to simulate complex organizational dynamics, experiment with different structures and policies, and analyze their impact on performance metrics.
 
